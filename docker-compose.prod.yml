@@ -3,7 +3,7 @@ services:
   node-app:
     build: 
       context: .
-      target: production
+      # target: production
     
     environment:
         - NODE_ENV=production
