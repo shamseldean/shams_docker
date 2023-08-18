@@ -32,10 +32,10 @@ redisClient.connect();
 app.get('/', (req, res) =>{
     redisClient.set('products','Shams international');
     console.log(`traffic from ${os.hostname}`)
-    res.send("<hl> Hello Shams  i'm so proud of you be modest from docker <hl>")});
+    res.send("<hl> Hello Shams watchtower  i'm so proud of you be modest from docker Hamdellah 3la Elsalama  <hl>")});
 app.get('/data', async (req, res) =>{
     const products = await redisClient.get('products');
-    res.send(`<hl> Hello Shams  i'm so proud of you keep it up  <hl> <h2>${products}<h2>`);
+    res.send(`<hl> Hello Shams  i'm so proud of you keep it up <hl> <h2>${products}<h2>`);
 });
 app.listen(PORT, () => console.log(`app 15 up and running on port:,${PORT}`));
 
