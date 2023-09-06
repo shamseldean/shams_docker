@@ -11,13 +11,15 @@ pipeline{
                 jq --version 
             '''
             }
-            stage("excutable docker"){
+            } 
+        stage("excutable docker"){
             steps{
                 sh '''
                 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d  --scale node-app=3
             '''
-            }
+        }
 
         }
     }
+    
 }
