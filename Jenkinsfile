@@ -20,12 +20,13 @@ pipeline{
                 // sh 'docker build -t mshams1/node-app .'
                 sh "docker login -u $user -p $password"
                 sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  build'
-                 sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  push'
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  push'
                 
                 echo 'excute docker' 
                 
                 // sh 'docker push mshams1/node-app'
-                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build --scale node-app=3' //up -d --build --scale node-app=3
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  pull'
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d  ' //up -d --build --scale node-app=3
               }
             }
         }
