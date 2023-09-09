@@ -25,19 +25,17 @@ pipeline{
                 echo 'excute docker' 
                 
                 // sh 'docker push mshams1/node-app'
-                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  pull'
-                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d  ' //up -d --build --scale node-app=3
+                //up -d --build --scale node-app=3
               }
             }
         }
-        // stage("excute docker"){
-        //     steps{
-        //         sh '''
-        //         docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d  --scale node-app=3
-        //     '''
-        // }
+        stage("deploy app"){
+            steps{
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  pull'
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d '
+        }
 
-        // }
+        }
     }
     
 }
