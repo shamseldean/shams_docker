@@ -12,16 +12,19 @@ pipeline{
             '''
             }
             } 
-        stage("registry docker"){
-            steps{
-                sh '''
-               // This step should not normally be used in your script. Consult the inline help for details.
-withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker', url: 'https://hub.docker.com/') {
-    // some block
-}
-            '''
-        }
-
+        stage('build') {
+            steps {
+                echo 'start build1'
+                withCredentials([usernamePassword(credentialsId: 'mshams1', usernameVariable: 'user', passwordVariable: 'password')]) {
+                echo 'start build2'
+                // sh 'docker build -t mshams1/node-app .'
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  --build'
+                
+                echo 'start build3' 
+                sh "docker login -u $user -p $password"
+                sh 'docker push mshams1/node-app'
+              }
+            }
         }
         stage("excute docker"){
             steps{
