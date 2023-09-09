@@ -26,14 +26,14 @@ pipeline{
               }
             }
         }
-        stage("excute docker"){
-            steps{
-                sh '''
-                docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d  --scale node-app=3
-            '''
-        }
+        // stage("excute docker"){
+        //     steps{
+        //         sh '''
+        //         docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d  --scale node-app=3
+        //     '''
+        // }
 
-        }
+        // }
     }
     
 }
