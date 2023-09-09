@@ -18,7 +18,7 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'a21c3d9b-109d-402e-96ce-3f9815c85bf9', usernameVariable: 'user', passwordVariable: 'password')]) {
                 echo 'start build2'
                 // sh 'docker build -t mshams1/node-app .'
-                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  --build'
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  build'
                  sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml  push'
                 
                 echo 'excute docker' 
