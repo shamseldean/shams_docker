@@ -24,7 +24,7 @@ pipeline{
                 echo 'excute docker' 
                 sh "docker login -u $user -p $password"
                 // sh 'docker push mshams1/node-app'
-                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build --scale node-app=3'
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml down' //up -d --build --scale node-app=3
               }
             }
         }
